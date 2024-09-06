@@ -1,0 +1,17 @@
+/* Ensure you include this file in your project */
+.card-img {
+    height: 200px; /* Set a fixed height for images */
+    width: 100%; /* Ensure images take up the full width of the column */
+    object-fit: cover; /* Ensure images cover the area without distortion */
+  }
+  
+  .card-text {
+    white-space: normal; /* Ensure text wraps properly */
+    overflow: hidden; /* Hide overflow text if any */
+    text-overflow: ellipsis; /* Show ellipsis for overflowed text */
+  }
+  
+  /* Optional: Adjust the height of the card */
+  .card {
+    height: 100%; /* Full height */
+  }

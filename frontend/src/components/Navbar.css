@@ -1,0 +1,108 @@
+.nav-bar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    height: 10vh;
+    background-color: rgb(87, 216, 255);
+    overflow: hidden;
+    position: fixed;
+    z-index: 1;
+}
+
+.logo{
+    width: 30vw;
+    font-family: sans-serif;
+}
+
+.logo h3{
+    position: absolute;
+    top:25px;
+    font-weight: 900;
+    animation-name: navlogo;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+
+.menu ul{
+    font-size: 25px;
+    display: flex;
+    gap: 100px;
+    padding-top: 14px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu ul li{
+    all: unset;
+    font-weight: 500;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.page-item{
+    all: unset;
+    color: rgb(5, 120, 66);
+    border-bottom: 4px solid rgba(255, 0, 0, 0);
+}
+.page-item:hover{
+    all:unset;
+    color: rgb(0, 114, 229);
+    border-bottom: 4px solid rgb(0, 114, 229);
+}
+.curr-page{
+    color: rgb(0, 114, 229);
+    border-bottom: 4px solid rgb(0, 114, 229);
+}
+
+@keyframes navlogo {
+    0%{
+        left: 100px;
+        top:30px;
+        scale: 0;
+        color: rgb(142, 142, 142);
+    }
+    10%{
+        left: 100px;
+        top:20px;
+    }
+    20%{
+        left: 100px;
+        top: 30px;
+    }
+    30%{
+        left: 100px;
+        top: 20px;
+    }
+    40%{
+        left: 100px;
+        top:30px;
+    }
+    50%{
+        left: 100px;
+        top: 20px;
+    }
+    60%{
+        left: 100px;
+        top:30px;
+    }
+    70%{
+        left: 100px;
+        top: 20px;
+    }
+    80%{
+        left: 100px;
+        top:30px;
+    }
+    90%{
+        left: 100px;
+        top:20px;
+    }
+    100%{
+        top:30px;
+        left: 100px;
+        scale: 1.5;
+        color: rgb(10, 128, 149);
+    }
+}

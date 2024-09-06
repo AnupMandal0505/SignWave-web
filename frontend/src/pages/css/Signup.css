@@ -1,0 +1,148 @@
+.signup-main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-container{
+    margin-top: 10vh;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-img{
+    width: 100vw;
+    height: 90vh;
+}
+
+.signup-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.inp-fields{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.inp-box{
+    width: 16vw;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    background-color: aqua;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+/*
+    animation-name: borderani;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+*/
+}
+
+.inp{
+    all:unset;
+    width: 15vw;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgb(185, 248, 254);
+    padding-left: 30px;
+    border:2px solid gray;
+    font-weight: 900;
+}
+
+
+.social-container{
+    display: flex;
+    gap:30px;
+}
+
+.social-box{
+    background-color: rgb(177, 225, 255);
+    width: 180px;
+    height: 60px;
+    border-radius: 40px;
+    box-shadow: 3px 3px 6px 2px rgba(172, 172, 172, 0.493);
+    display: flex;
+    justify-content: space-between;
+}
+
+.social-icon-fb{
+    width: 60px;
+}
+.social-icon-google{
+    width: 38px;
+    height: 51px;
+    padding-top: 10px;
+    margin-left: 10px;
+}
+
+.google-text{
+    padding-top: 16px;
+    padding-right: 30px;
+    font-weight: 700;
+    color: rgb(21, 118, 202);
+}
+
+.fb-text{
+    padding-top: 16px;
+    padding-right: 20px;
+    font-weight: 700;
+    color:  rgb(21, 118, 202);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes borderani {
+    0%{
+        background-color: rgba(138, 255, 175, 0.495);
+        box-shadow: 0px 0px 10px 3px rgba(138, 255, 175, 0.495);
+    }
+    20%{
+        background-color: rgb(123, 255, 220, 0.495);
+        box-shadow: 0px 0px 10px 3px rgb(123, 255, 220, 0.495);
+    }
+    40%{
+        background-color: rgba(212, 255, 94, 0.495);
+        box-shadow: 0px 0px 10px 3px rgba(212, 255, 94, 0.495);
+    }
+    60%{
+        background-color: rgba(240, 123, 255, 0.495);
+        box-shadow: 0px 0px 10px 3px rgba(240, 123, 255, 0.495);
+    }
+    80%{
+        background-color: rgba(134, 167, 255, 0.495);
+        box-shadow: 0px 0px 10px 3px rgba(134, 167, 255, 0.495);
+    }
+    100%{
+        background-color: rgb(123, 255, 220, 0.495);
+        box-shadow: 0px 0px 10px 3px rgb(123, 255, 220, 0.495);
+    }
+}
