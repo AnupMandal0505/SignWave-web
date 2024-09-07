@@ -108,7 +108,7 @@ const SocketProvider = ({ children }) => {
         })
         socket.on("end", () => {
             console.log("other user has left!")
-            navigate('/call')
+            location.reload();
             if (localAudioTrack.current) {
                 localAudioTrack.current.stop();
                 localAudioTrack.current = null;

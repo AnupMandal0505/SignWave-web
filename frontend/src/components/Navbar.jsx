@@ -94,7 +94,20 @@ const Navbar = () => {
                 >
                   Contact
                 </Link>
-                <Link
+                {localStorage.getItem('user') &&<Link
+                  to="/call"
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Call
+                </Link>}
+                {localStorage.getItem('user') ?<button className='className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-150'
+                 onClick={()=>{
+                  localStorage.removeItem('user');
+                  location.replace('/signin');
+                 }}
+                >
+                  Log Out
+                </button> :<><Link
                   to="/signin"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
@@ -105,13 +118,7 @@ const Navbar = () => {
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Signup
-                </Link>
-                <Link
-                  to="/call"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Call
-                </Link>
+                </Link></>}
               </div>
             </div>
 
@@ -125,7 +132,7 @@ const Navbar = () => {
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link
-            to="//"
+            to="/"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Home
