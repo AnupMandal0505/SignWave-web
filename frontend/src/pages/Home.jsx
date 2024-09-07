@@ -14,10 +14,10 @@ import { useState } from 'react';
 
 import { TextField, Button, List, ListItem, ListItemText, Paper, Typography } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
-import './css/ChatBot.css';
+import './css/Chatbot.css';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-import vid1 from '../assets/videos/promo1.mp4';
+import vid1 from '../assets/videos/sign2.mp4';
 
 const Home = () => {
   const [chatbot, setChatbot] = useState(false);

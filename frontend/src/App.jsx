@@ -34,8 +34,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
-          <Route path='/signin' element={<Signin />} />
-          <Route path='/signup' element={<Signup />} />
+          <Route path='/signin' element={<><Navbar/><Signin /></>} />
+          <Route path='/signup' element={<><Navbar/><Signup /></>} />
           <Route path='/service' element={<Service />} />
           <Route path='/audio' element={<LiveAudioExtractor />} />
           <Route path='/calltest' element={<>
