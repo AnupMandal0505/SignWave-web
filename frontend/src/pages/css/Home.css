@@ -1,11 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 
-.home-page{
+.home-page {
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -13,27 +13,29 @@
     padding-top: 10vh;
 }
 
-.home-sec-1{
+.home-sec-1 {
     display: flex;
     width: 100vw;
     height: 90vh;
     align-items: center;
 }
-.home-sec-1-left{
+
+.home-sec-1-left {
     flex: 2;
     display: flex;
     justify-content: center;
     padding-left: 20px;
 }
-.home-sec-1-right{
-    flex:1;
+
+.home-sec-1-right {
+    flex: 1;
 }
 
-.home-sec-1-text{
+.home-sec-1-text {
     width: 40vw;
 }
 
-.ani-under{
+.ani-under {
     background-color: rgb(7, 207, 140);
     margin-bottom: 10px;
     width: 35vw;
@@ -42,7 +44,7 @@
     animation-duration: 3s;
 }
 
-.ani-rotact{
+.ani-rotact {
     scale: 2;
     animation-name: anirotact;
     animation-duration: 3s;
@@ -65,7 +67,7 @@
 
 
 
-.home-sec-2{
+.home-sec-2 {
     width: 100vw;
     height: 90vh;
     display: flex;
@@ -74,7 +76,7 @@
     padding-top: 50px;
 }
 
-.ani-sec-2-1{
+.ani-sec-2-1 {
     overflow: hidden;
     height: 60px;
     scale: 1.4;
@@ -86,7 +88,7 @@
 
 
 
-.sec-2-text{
+.sec-2-text {
     opacity: 1;
     font-size: 20px;
     animation-name: ani2_2;
@@ -100,7 +102,7 @@
 
 
 
-.home-sec-3{
+.home-sec-3 {
     width: 100vw;
     height: 75vh;
     display: flex;
@@ -108,7 +110,7 @@
     align-items: center;
 }
 
-.ani-sec-3-1{
+.ani-sec-3-1 {
     overflow: hidden;
     height: 60px;
     width: 80vw;
@@ -120,21 +122,21 @@
     animation-range: entry 0% cover 90%;
 }
 
-.bubble{
+.bubble {
     width: 200px;
     height: 200px;
     background-color: rgb(163, 255, 241);
     border-radius: 50%;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     animation-name: showblocks;
-    animation-timeline: view() ;
+    animation-timeline: view();
     animation-range: entry 0% cover 40%;
 }
 
-.in-bubble{
+.in-bubble {
     width: 200px;
     height: 200px;
     display: flex;
@@ -142,32 +144,34 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    
+
 }
 
-.in-bubble-h4{
+.in-bubble-h4 {
     font-size: 1.5rem;
     font-weight: 700;
     color: #ffffff;
 }
 
-.in-bubble-p{
+.in-bubble-p {
     padding: 10px;
     padding-top: 20px;
     display: none;
     color: #5e0505;
     font-size: 0.8rem;
 }
-.bubble:hover{
+
+.bubble:hover {
     scale: 1.2;
     transition: 2s;
     background-image: none;
 }
-.bubble:hover .in-bubble-p{
+
+.bubble:hover .in-bubble-p {
     display: block;
 }
 
-.bubble:hover .in-bubble-h4{
+.bubble:hover .in-bubble-h4 {
     display: none;
 }
 
@@ -175,7 +179,7 @@
 
 
 
-.home-sec-4{
+.home-sec-4 {
     width: 100vw;
     height: 65vh;
     display: flex;
@@ -184,21 +188,23 @@
 }
 
 @keyframes showblocks {
-    0%{
+    0% {
         scale: 0;
         opacity: 0;
     }
-    60%{
+
+    60% {
         scale: 0;
         opacity: 0;
     }
-    100%{
+
+    100% {
         opacity: 1;
         scale: 1;
     }
 }
 
-.ani-under2{
+.ani-under2 {
     height: 7px;
     background-color: #20ade0;
     margin-top: 30px;
@@ -208,17 +214,20 @@
 }
 
 @keyframes aniunder2 {
-    0%{
+    0% {
         width: 0px;
     }
-    40%{
+
+    40% {
         width: 0px;
     }
-    100%{
+
+    100% {
         width: 30vw;
     }
 }
-.ani-under3{
+
+.ani-under3 {
     height: 7px;
     margin-bottom: 100px;
     background-color: #20ade0;
@@ -228,31 +237,35 @@
 }
 
 @keyframes aniunder3 {
-    0%{
+    0% {
         width: 0px;
     }
-    40%{
+
+    40% {
         width: 0px;
     }
-    100%{
+
+    100% {
         width: 20vw;
     }
 }
 
 @keyframes aniunder {
-    from{
+    from {
         width: 0px;
     }
-    to{
+
+    to {
         width: 35vw;
     }
 }
 
 @keyframes anirotact {
-    from{
+    from {
         scale: 0;
     }
-    to{
+
+    to {
         scale: 2;
     }
 }
@@ -260,12 +273,13 @@
 
 
 @keyframes ani2_1 {
-    from{
+    from {
         height: 0px;
         scale: 0;
         color: rgb(255, 0, 0);
     }
-    to{
+
+    to {
         scale: 1.4;
         height: 60px;
         color: #20ade0;
@@ -273,45 +287,51 @@
 }
 
 @keyframes ani2_2 {
-    0%{
+    0% {
         opacity: 0;
     }
-    40%{
+
+    40% {
         opacity: 0;
     }
-    80%{
+
+    80% {
         opacity: 1;
     }
 }
 
 
-.bubble1{
-    background-image:url('../../assets/home1.jpg');
-    background-size: cover;
-    background-position: center;
-}
-.bubble2{
-    background-image:url('../../assets/home2.jpg');
-    background-size: cover;
-    background-position: center;
-}
-.bubble3{
-    background-image:url('../../assets/home3.jpg');
-    background-size: cover;
-    background-position: center;
-}
-.bubble4{
-    background-image:url('../../assets/home4.jpg');
-    background-size: cover;
-    background-position: center;
-}
-.bubble5{
-    background-image:url('../../assets/home5.jpg');
+.bubble1 {
+    background-image: url('../../assets/home1.jpg');
     background-size: cover;
     background-position: center;
 }
 
-.chat-bt-btn{
+.bubble2 {
+    background-image: url('../../assets/home2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.bubble3 {
+    background-image: url('../../assets/home3.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.bubble4 {
+    background-image: url('../../assets/home4.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.bubble5 {
+    background-image: url('../../assets/home5.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.chat-bt-btn {
     width: 50px;
     height: 50px;
     background-color: #5e0505;
@@ -331,15 +351,192 @@
     background-position: center;
 }
 
-.chat-box{
-    background-color: #a3d1da;
+.chat-box {
     width: 300px;
     height: 400px;
     border-radius: 10px;
     position: fixed;
     bottom: 20px;
     right: 20px;
+    margin-right: 100px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: end;
+    padding-bottom: 10px;
     align-items: center;
+}
+
+.promo1 {
+    width: 60rem;
+    border-radius: 20px;
+    box-shadow: 3px 3px 20px 3px rgba(150, 150, 150, 0.785);
+}
+
+.sih-sec-1-h1 {
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 900;
+    color: #20ade0;
+    position: absolute;
+    top: 1830px;
+    left: 280px;
+    z-index: -1;
+    animation-name: hiddenText;
+    animation-timeline: view();
+    animation-range: entry 0% cover 70%;
+}
+
+.sih-sec-1-h1 span {
+    color: lightgreen;
+}
+
+@keyframes hiddenText {
+    0% {
+        opacity: 0;
+        display: none;
+        scale: 0.5;
+        top: 1930px;
+        left: 280px;
+    }
+
+    40% {
+        opacity: 0;
+        scale: 0.5;
+        top: 1930px;
+        left: 280px;
+    }
+
+    100% {
+        opacity: 1;
+        scale: 1;
+        top: 1830px;
+        left: 280px;
+    }
+}
+
+
+.card {
+    background-color: white;
+    margin-right: 10px;
+    box-shadow: 2vw 2vw 12vw 3vw #ccc;
+}
+
+.card #header {
+    height: 5vw;
+    background: #000;
+}
+
+.card #header h1 {
+    color: #fff;
+    font-size: 2vw;
+    font-family: "Finger Paint", cursive;
+    padding: 1vw;
+}
+
+.card #message-section::-webkit-scrollbar {
+    width: 10px;
+}
+
+.card #message-section {
+    height: 32vw;
+    padding: 0 2.5vw;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #90a4ae #fff;
+}
+
+.card #message-section::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+}
+
+.card #message-section::-webkit-scrollbar-thumb {
+    background-color: #90a4ae;
+    border-radius: 6px;
+    border: 3px solid var(--scrollbarBG);
+}
+
+.card #message-section #bot,
+.card #message-section #user {
+    position: relative;
+    bottom: 0;
+    min-height: 1.5vw;
+    border: 0.15vw solid #777;
+    background-color: #fff;
+    border-radius: 0px 1.5vw 1.5vw 1.8vw;
+    padding: 1vw;
+    margin: 1.5vw 0;
+}
+
+.card #message-section #user {
+    border: 1.5px solid #000;
+    border-radius: 1.5vw 0vw 1.5vw 1.8vw;
+    background-color: #000;
+    float: right;
+}
+
+.card #message-section #user #user-response {
+    color: #fff;
+}
+
+.card #message-section .message {
+    color: #000;
+    clear: both;
+    line-height: 1.2vw;
+    font-size: 1.2vw;
+    padding: 8px;
+    position: relative;
+    margin: 8px 0;
+    max-width: 85%;
+    word-wrap: break-word;
+    z-index: 2;
+}
+
+.card #input-section {
+    z-index: 1;
+    padding: 0 2.5vw;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    overflow: hidden;
+    height: 6vw;
+    width: 100%;
+}
+
+.card #input-section input {
+    color: #000;
+    min-width: 0.5vw;
+    outline: none;
+    height: 5vw;
+    width: 26vw;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #000 0.1vw;
+}
+
+.card .send {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    flex: 0 0 auto;
+    margin-left: 1.4vw;
+    margin-right: 0vw;
+    padding: 0;
+    position: relative;
+    outline: none;
+}
+
+.card .send .circle {
+    position: relative;
+    width: 4.8vw;
+    height: 4.8vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card .send .circle i {
+    font-size: 3vw;
+    margin-left: -1vw;
+    margin-top: 1vw;
 }
