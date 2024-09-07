@@ -23,7 +23,7 @@ function VideoCall2() {
     const [loading, setLoading] = useState(false);
     const [text, setText] = useState("")
     // const [counts, setCounts] = useState(0);
-    var counts =0;
+    var counts = 0;
 
     var prevChar = null;
 
@@ -54,40 +54,40 @@ function VideoCall2() {
         setLoading(false);
     }
 
-    const getPrediction = (inputData) => {
-        console.log("huhu")
-        fetch(DJANGO_URL + '/api/call', {
+    const getPrediction = async (inputData) => {
+        const response = await fetch(DJANGO_URL + '/api/call', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ calldata: inputData })
-        }).then(res => res.json()).then(data => {
-            console.log("response: ", data)
-            const char = data['Response']
-            if (prevChar === char) {
-                if (counts <= THRESHOLD) {
-                    // setCounts(prev => prev + 1);
-                    counts++;
-                }
-                else {
-                    // setCounts(0);
-                    counts=0;
-                    prevChar = char;
-                    setText((prev) => {
-                        if (char === "space") return prev + " ";
-                        else if (char === "del") return prev.slice(0, -1);
-                        return prev + data['Response'];
-                    }
-                    );
-                }
+        })
+        const data = await response.json();
+        console.log("response: ", data)
+        const char = data['Response']
+        if (prevChar === char) {
+            if (counts <= THRESHOLD) {
+                // setCounts(prev => prev + 1);
+                counts++;
             }
             else {
-                // setCounts(1);
-                counts=1;
+                // setCounts(0);
+                counts = 0;
                 prevChar = char;
+                setText((prev) => {
+                    if (char === "space") return prev + " ";
+                    else if (char === "del") return prev.slice(0, -1);
+                    return prev + data['Response'];
+                }
+                );
             }
-        })
+        }
+        else {
+            // setCounts(1);
+            counts = 1;
+            prevChar = char;
+        }
+        return char
     }
 
 
@@ -106,11 +106,12 @@ function VideoCall2() {
             minTrackingConfidence: 0.7,
         });
 
-        hands.onResults((results) => {
+        hands.onResults(async (results) => {
             try {
                 console.log("results", results);
+                var resultData = null
                 if (results.multiHandLandmarks.length > 0) {
-                    getPrediction({ multiHandLandmarks: results.multiHandLandmarks });
+                    resultData = await getPrediction({ multiHandLandmarks: results.multiHandLandmarks });
                 }
 
                 const canvas = canvasRef.current;
@@ -134,6 +135,21 @@ function VideoCall2() {
                             radius: 1,
                         });
                     }
+                }
+                if (resultData) {
+                    // Draw text on the canvas
+                    canvasCtx.font = '20px Arial'; // Set the font size and type
+                    canvasCtx.fillStyle = 'red';    // Set the text color
+                    canvasCtx.textAlign = 'center'; // Set text alignment
+                    canvasCtx.textBaseline = 'middle'; // Set text baseline
+
+                    // Example text and position
+                    const text = resultData;
+                    const x = canvas.width / 2; // Centered horizontally
+                    const y = canvas.height / 2; // Centered vertically
+
+                    // Draw the text
+                    canvasCtx.fillText(text, x, y);
                 }
                 canvasCtx.restore();
             }
@@ -172,12 +188,12 @@ function VideoCall2() {
                     onChange={(value) => setReceiverName(value)}
                     className="border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
-                {socketContext.remoteUserName?<button
-                    onClick={() => {location.reload()}}
+                {socketContext.remoteUserName ? <button
+                    onClick={() => { location.reload() }}
                     className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-150"
                 >
                     End
-                </button>:<button
+                </button> : <button
                     onClick={() => socketContext?.callUser(receiverName)}
                     className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-150"
                 >

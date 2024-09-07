@@ -30,7 +30,7 @@ const CallWrapper = ({ socketContext, canvasRef }) => {
             //   zIndex: 2,
             // }}
             />
-            {socketContext?.remoteUserName && <p style={{ position: "absolute", bottom: "10px", left: "10px", color: "white", backgroundColor: "rgba(0,0,0,0.5)", padding: "5px" }}>{socketContext.remoteUserName}</p>}
+            {socketContext?.remoteUserName && <p style={{ position: "absolute", bottom: "10px", left: "10px", color: "white", backgroundColor: "rgba(0,0,0,0.5)", padding: "5px", zIndex:99999999999 }}>{socketContext.remoteUserName}</p>}
           </div>
           <div className="col-md-4 flex items-center justify-center ">
 
