@@ -22,6 +22,7 @@ import VideoCall2 from './pages/VideoCall2'
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LiveAudioExtractor from './pages/LiveAudioExtractor'
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path='/signin' element={<Signin />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/service' element={<Service />} />
+          <Route path='/audio' element={<LiveAudioExtractor />} />
           <Route path='/calltest' element={<>
             {/* <SocketProvider> */}
             <Navbar />
