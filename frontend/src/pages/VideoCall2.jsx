@@ -25,8 +25,8 @@ function VideoCall2() {
     const [transformType, setTransformType] = useState('SIGN');
 
     const transformOptions = [
-        {value:'SIGN'},
-        {value:'SPEECH'},
+        { value: 'SIGN' },
+        { value: 'SPEECH' },
     ]
 
     var counts = 0;
@@ -170,26 +170,26 @@ function VideoCall2() {
     const captureAudio = async (videoRef) => {
         console.log("videoRef.current.readyState", videoRef.current.readyState);
         // return;
-        if(videoRef.current.readyState !== 4){
+        if (videoRef.current.readyState !== 4) {
             console.log("videoRef.readyState !== 4");
             return;
         }
         // Get the audio track from the stream
         const stream = videoRef.current.srcObject;
         const audioTrack = stream.getAudioTracks()[0];
-    
+
         if (!audioTrack) {
             console.error('No audio track found.');
             return;
         }
-    
+
         const audioStream = new MediaStream([audioTrack]);
-    
+
         try {
             // Try different MIME types if needed
             const mimeTypes = ['audio/webm', 'audio/webm;codecs=opus', 'audio/ogg'];
             let selectedMimeType = null;
-    
+
             for (const mimeType of mimeTypes) {
                 console.log(mimeType, MediaRecorder.isTypeSupported(mimeType))
                 if (MediaRecorder.isTypeSupported(mimeType)) {
@@ -197,37 +197,37 @@ function VideoCall2() {
                     break;
                 }
             }
-    
+
             if (!selectedMimeType) {
                 throw new Error('No supported MIME type found for MediaRecorder.');
             }
-    
+
             console.log('Using MIME type:', selectedMimeType);
-    
+
             const mediaRecorder = new MediaRecorder(audioStream, { mimeType: selectedMimeType });
             const audioChunks = [];
-    
+
             mediaRecorder.ondataavailable = event => {
                 if (event.data.size > 0) {
                     audioChunks.push(event.data);
                 }
             };
-    
+
             mediaRecorder.onstop = async () => {
                 const audioBlob = new Blob(audioChunks, { type: selectedMimeType });
                 const formData = new FormData();
                 // formData.append('audio_file', audioBlob, 'audio.' + selectedMimeType.split('/')[1]);
                 formData.append('audio_file', audioBlob, 'audio.' + "webm");
-    
+
                 try {
-                    const response = await fetch(DJANGO_URL+'/api/audio', {
+                    const response = await fetch(DJANGO_URL + '/api/audio', {
                         method: 'POST',
                         body: formData
                     });
-    
+
                     if (response.ok) {
                         const result = await response.json();
-                        setText((prev)=>prev+String(result.transcribed_text));
+                        setText((prev) => prev + String(result.transcribed_text));
                         console.log('Transcribed text:', result.transcribed_text);
                     } else {
                         console.error('Failed to transcribe audio');
@@ -236,63 +236,81 @@ function VideoCall2() {
                     console.error('Error:', error);
                 }
             };
-    
+
             mediaRecorder.onerror = (event) => {
                 console.error('MediaRecorder error:', event.error);
             };
-    
+
             mediaRecorder.start();
             console.log('MediaRecorder started');
-    
+
             // Stop recording after 5 seconds
             setTimeout(() => {
                 mediaRecorder.stop();
                 console.log('MediaRecorder stopped');
             }, 10000);
-    
+
         } catch (error) {
             console.error('Error initializing MediaRecorder:', error);
         }
     };
-    
+
     // SPEECH
 
 
     useEffect(() => {
         fetchUsers();
         // setLoading(true);
-        var SIGN_interval_id=null;
-        var SPEECH_interval_id=null;
+        var SIGN_interval_id = null;
+        var SPEECH_interval_id = null;
         if (socketContext.remoteVideoRef.current) {
-            if(transformType==='SIGN')
-                SIGN_interval_id=setInterval(() => {
-            // console.log("checking")
-            if (
-                socketContext?.remoteVideoRef.current !== undefined &&
-                socketContext?.remoteVideoRef.current !== null &&
-                socketContext?.remoteVideoRef.current.readyState === 4
-                
-            ) {
-                // console.log("detecting")
-                detect(hands, socketContext?.remoteVideoRef);
+            if (transformType === 'SIGN') {
+                SIGN_interval_id = setInterval(() => {
+                    // console.log("checking")
+                    if (
+                        socketContext?.remoteVideoRef.current !== undefined &&
+                        socketContext?.remoteVideoRef.current !== null &&
+                        socketContext?.remoteVideoRef.current.readyState === 4
+
+                    ) {
+                        // console.log("detecting")
+                        detect(hands, socketContext?.remoteVideoRef);
+                    }
+
+                }, 500);
+
             }
-            
-        }, 500);
-        if(transformType==='SPEECH')
-            SPEECH_interval_id = setInterval(() => {
+            if (transformType === 'SPEECH') {
+                const canvas = canvasRef.current;
+                const canvasCtx = canvas.getContext('2d');
+                canvasCtx.save();
+
+                // Clear the canvas to ensure transparency
+                canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+                canvasCtx.restore()
                 if (
                     socketContext?.remoteVideoRef.current !== undefined &&
                     socketContext?.remoteVideoRef.current !== null &&
                     socketContext?.remoteVideoRef.current.readyState === 4
 
                 )
-                captureAudio(socketContext.remoteVideoRef);
-            }, 10000);
+                    captureAudio(socketContext.remoteVideoRef);
+                SPEECH_interval_id = setInterval(() => {
+                    if (
+                        socketContext?.remoteVideoRef.current !== undefined &&
+                        socketContext?.remoteVideoRef.current !== null &&
+                        socketContext?.remoteVideoRef.current.readyState === 4
+
+                    )
+                        captureAudio(socketContext.remoteVideoRef);
+                }, 10000);
+
+            }
         }
 
-        return ()=>{
-            if(SIGN_interval_id) clearInterval(SIGN_interval_id);
-            if(SPEECH_interval_id) clearInterval(SPEECH_interval_id);
+        return () => {
+            if (SIGN_interval_id) clearInterval(SIGN_interval_id);
+            if (SPEECH_interval_id) clearInterval(SPEECH_interval_id);
         }
     }, [transformType]);
 
@@ -312,12 +330,12 @@ function VideoCall2() {
                 {socketContext.remoteUserName ? <button
                     onClick={() => { location.reload() }}
                     className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-150"
-                    >
+                >
                     End
                 </button> : <button
                     onClick={() => socketContext?.callUser(receiverName)}
                     className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-150"
-                    >
+                >
                     Call
                 </button>}
                 <SelectComponent
